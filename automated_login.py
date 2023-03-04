@@ -27,7 +27,7 @@ def get_new_access_token(kite:KiteConnect, login_info:dict):
     r = requests.Session()
     
     # Make a GET request to the KiteConnect login page and extract the session_id from the headers
-    redirected_url = r.get(f"https://kite.zerodha.com/connect/login?api_key={login_info['api_key']}&v=3")
+    redirected_response = r.get(f"https://kite.zerodha.com/connect/login?api_key={login_info['api_key']}&v=3")
     session_id = redirected_response.url.split('sess_id=')[1]
     
     # Make a POST request to the KiteConnect login API and extract the request_id from the response
